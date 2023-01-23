@@ -1,0 +1,15 @@
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\bin\Debug\net6.0\T9Horse.exe
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\bin\Debug\net6.0\T9Horse.deps.json
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\bin\Debug\net6.0\T9Horse.runtimeconfig.json
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\bin\Debug\net6.0\T9Horse.dll
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\bin\Debug\net6.0\T9Horse.pdb
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.csproj.AssemblyReference.cache
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.AssemblyInfoInputs.cache
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.AssemblyInfo.cs
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.csproj.CoreCompileInputs.cache
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.dll
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\refint\T9Horse.dll
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.pdb
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\T9Horse.genruntimeconfig.cache
+C:\Users\anoni\Desktop\GitRepos\HorseCellPhone\T9Horse\T9Horse\obj\Debug\net6.0\ref\T9Horse.dll
