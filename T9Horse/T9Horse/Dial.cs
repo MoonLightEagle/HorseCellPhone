@@ -1,13 +1,13 @@
 ﻿namespace T9Horse
 {
-    internal class Dial
+    public class Dial
     {
         public int height { get; }
         public int width { get; }
         public int numberOfHops { get; }
         public KeyValuePair<int, int> startingLocation { get; }
         public int[,] matrix { get; }
-        public static HashSet<int> s_uniqueNumbers { get; }
+        public static HashSet<string> s_uniqueNumbers { get; }
         public static KeyValuePair<int, int>[] s_jumps { get; }
         public bool showMatrix { get; private set; }
         public bool showUniqueNumbers { get; private set; }
@@ -21,6 +21,19 @@
             this.numberOfHops = numberOfHops;
             this.height = matrix.GetLength(0);
             this.width = matrix.GetLength(1);
+            this.showMatrix = showMatrix;
+            this.showUniqueNumbers = showUniqueNumbers;
+        }
+        public Dial(int[,] matrix, KeyValuePair<int, int> startingLocation, int numberOfHops, bool showUniqueNumbers = false, bool showMatrix = false)
+        {
+            this.matrix = matrix;
+            this.numberOfHops = numberOfHops;
+            this.height = matrix.GetLength(0);
+            this.width = matrix.GetLength(1);
+            this.showMatrix = showMatrix;
+            this.showUniqueNumbers = showUniqueNumbers;
+            this.startingLocation = startingLocation;
+
         }
         public Dial(int height, int width, KeyValuePair<int, int> startingLocation, int numberOfHops, bool showUniqueNumbers = false, bool showMatrix = false)
         {
@@ -35,7 +48,7 @@
         }
         static Dial()
         {
-            s_uniqueNumbers = new HashSet<int>();
+            s_uniqueNumbers = new HashSet<string>();
             s_jumps = new KeyValuePair<int, int>[] { new KeyValuePair<int, int> ( 1, 2),
                                                                    new KeyValuePair<int, int> ( 2, 1),
                                                                    new KeyValuePair<int, int> ( -1, 2),
@@ -68,15 +81,16 @@
                 Console.WriteLine();
             }
         }
-        public int countDistinctNumbers(KeyValuePair<int, int> currPoint, int hopsRemaining, int prevNumber = -1)
+        public int countDistinctNumbers(KeyValuePair<int, int> currPoint, int hopsRemaining, string prevNumber = "")
         {
-            if (prevNumber == -1)
+
+            if (prevNumber == "")
             {
-                prevNumber = matrix[currPoint.Key, currPoint.Value];
+                prevNumber = matrix[currPoint.Key, currPoint.Value].ToString();
             }
             else
             {
-                prevNumber = prevNumber * 10 + matrix[currPoint.Key, currPoint.Value];
+                prevNumber = prevNumber + matrix[currPoint.Key, currPoint.Value];
             }
 
             if (hopsRemaining == 0)
@@ -105,7 +119,25 @@
         }
         public int countDistinctNumbers()
         {
-            int result = countDistinctNumbers(this.startingLocation, this.numberOfHops);
+            if (this.matrix[this.startingLocation.Key, this.startingLocation.Value] < 0 || this.matrix[this.startingLocation.Key, this.startingLocation.Value] > 9)
+            {
+                throw new Exception(message: $"Staring location number must be between 0 and 9. Currently is {this.matrix[this.startingLocation.Key, this.startingLocation.Value]}");
+            }
+            int result;
+            if (calculateLegalMoves(this.startingLocation).Count == 0)
+            {
+                result = 1;
+                s_uniqueNumbers.Add(matrix[this.startingLocation.Key, this.startingLocation.Value].ToString());
+            }
+            else
+            {
+                result = countDistinctNumbers(this.startingLocation, this.numberOfHops);
+
+            }
+            return result;
+        }
+        public void displayResult()
+        {
             if (showMatrix)
             {
                 Console.WriteLine("This is matrix we are work on:");
@@ -120,7 +152,6 @@
                 }
             }
             Console.WriteLine("Answer is: " + Dial.s_uniqueNumbers.Count);
-            return result;
         }
         bool isLegalMove(KeyValuePair<int, int> currPoint, KeyValuePair<int, int> jump)
         {
@@ -129,7 +160,7 @@
             {
 
                 // if the number in this cell is between 0 and 9 we will run into next if()
-                if (matrix[currPoint.Key + jump.Key, currPoint.Value + jump.Value] >= 0 || matrix[currPoint.Key + jump.Key, currPoint.Value + jump.Value] <= 9)
+                if (matrix[currPoint.Key + jump.Key, currPoint.Value + jump.Value] >= 0 && matrix[currPoint.Key + jump.Key, currPoint.Value + jump.Value] <= 9)
                 {
                     return true;
                 }
@@ -146,6 +177,7 @@
                     result.Add(new KeyValuePair<int, int>(currPoint.Key + item.Key, currPoint.Value + item.Value));
                 }
             }
+
             return result;
         }
     }
